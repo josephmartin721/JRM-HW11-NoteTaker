@@ -1,6 +1,5 @@
 // Dependencies
 const express = require("express");
-const fs = require("fs");
 
 
 // Express App Creation

@@ -38,7 +38,7 @@ module.exports = function(app){
       console.log("Success!");
     })
     res.json(true)
-  })
+  });
 
   app.delete("/api/notes/:id", (req, res) => {
     const id = req.params.id;
@@ -58,5 +58,5 @@ module.exports = function(app){
       }
     })
     res.json(true);
-  })
-}
+  });
+};

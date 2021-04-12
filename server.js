@@ -1,47 +1,26 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const noteJSON = require('./db/db.json');
-const PORT = 8080;
-
-const app = express();
+// Dependencies
+// =============================================================
+const express = require("express");
+const fs = require("fs");
 
 
-app.use(express.static(path.join(__dirname, 'public')));
-// local browser display
-app.use(express.static('./'));
+// Sets up the Express App
+// =============================================================
+var app = express();
+var PORT = process.env.PORT || 8080
 
-
+// Sets up the Express app to handle data parsing
+// =============================================================
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/assets", express.static("./assets"));
 
 
-// routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+require("./routes/htmlRoutes")(app);
+require("./routes/apiRoutes")(app);
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
 });
-
-app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/notes.html'));
-});
-
-app.get('/api/notes', (req, res) => {
-  res.json(noteJSON);
-});
-
-app.post('/api/notes', (req, res) => {
-const lastId = noteJSON.length ? Math.max(...(noteJSON.map(note => note.id))) : 0;
-const id = lastId + 1;
-noteJSON.push( { id, ...req.body} );
-res.json(noteJSON.slice(-1));
-});
-
-// delete
-app.delete('/api/notes/:id', (req, res) => {
-let note = noteJSON.find( ({ id }) => id === JSON.parse(req.params.id));
-noteJSON.splice( noteJSON.indexOf(note), 1);
-res.end("Note deleted");
-});
-
-// server
-app.listen(PORT, () => console.log(`App listening on port ${PORT}`));

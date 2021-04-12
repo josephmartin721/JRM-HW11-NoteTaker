@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Write and save user notes.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

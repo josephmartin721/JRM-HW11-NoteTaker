@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = function(app){
   let notes = require("../db/db.json")
 
-  app.get("/api/notes", (req, res)=>{
+  app.get("/public/notes", (req, res)=>{
     return res.json(notes)
   })
   

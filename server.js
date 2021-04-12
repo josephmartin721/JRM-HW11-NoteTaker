@@ -1,23 +1,23 @@
-// Require the Express
-var express = require("express");
+// Dependencies
+const express = require("express");
+const fs = require("fs");
 
-// Create an express server.
+
+// Express App Creation
 var app = express();
+var PORT = process.env.PORT || 3000
 
-// Set port.
-var PORT = process.env.PORT || 3000;
-
-// Set up the Express app to handle data parsing
+// Express App Start
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/assets", express.static("./assets"));
 
-// ROUTES
-// Point the server to the route files.
+
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// LISTENER
-// Listen on port.
+
+// Server Start
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+    console.log("App listening on PORT " + PORT);
 });

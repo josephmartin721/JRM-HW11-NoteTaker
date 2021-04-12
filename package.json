@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,5 +15,14 @@
     "path": "^0.12.7",
     "server": "^1.0.32",
     "util": "^0.12.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephmartin721/JRM-HW11-NoteTaker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/josephmartin721/JRM-HW11-NoteTaker/issues"
+  },
+  "homepage": "https://github.com/josephmartin721/JRM-HW11-NoteTaker#readme"
 }

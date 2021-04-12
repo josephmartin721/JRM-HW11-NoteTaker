@@ -1,3 +1,6 @@
+const server = require('server');
+server(ctx => 'Hello World!');
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;

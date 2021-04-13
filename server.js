@@ -1,11 +1,11 @@
 // Dependencies
 const express = require("express");
 const fs = require("fs");
-
+const http = require("http");
+const PORT = process.env.PORT || 3000;
 
 // Express Setup
 var app = express();
-var PORT = process.env.PORT || 3000
 
 //Express
 app.use(express.urlencoded({ extended: true }));
